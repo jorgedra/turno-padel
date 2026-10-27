@@ -44,6 +44,10 @@ main { max-width: 480px; margin: 0 auto; }
   padding: 16px 0;
 }
 
+.topbar-actions { display: flex; gap: 8px; align-items: center; }
+.btn-small { min-height: 44px; padding: 0 14px; font-weight: 600; }
+.btn-small[hidden] { display: none; }
+
 h1 { font-size: 1.25rem; margin: 0; }
 h2 { font-size: 1rem; margin: 24px 0 8px; color: var(--muted); font-weight: 600; }
 

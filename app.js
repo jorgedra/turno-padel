@@ -214,6 +214,29 @@ $('file-import').addEventListener('change', async (e) => {
   }
 });
 
+// ---- Instalación ----
+// Chrome avisa con beforeinstallprompt cuando la app se puede instalar; guardamos el evento para lanzarlo desde el botón.
+let installPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  installPrompt = e;
+  $('btn-install').hidden = false;
+});
+
+window.addEventListener('appinstalled', () => {
+  installPrompt = null;
+  $('btn-install').hidden = true;
+});
+
+$('btn-install').addEventListener('click', async () => {
+  if (!installPrompt) return;
+  installPrompt.prompt();
+  await installPrompt.userChoice;
+  installPrompt = null;
+  $('btn-install').hidden = true;
+});
+
 // ---- Arranque ----
 render();
 

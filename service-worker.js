@@ -1,4 +1,4 @@
-const CACHE = 'turno-padel-v1';
+const CACHE = 'turno-padel-v2';
 const ASSETS = [
   './',
   'index.html',
