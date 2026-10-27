@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Turno Pádel">
+  <title>Turno Pádel</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Turno Pádel</h1>
+    <button id="btn-manage" class="icon-btn" aria-label="Gestionar jugadores">⚙</button>
+  </header>
+
+  <main>
+    <section class="card hero">
+      <p class="label">Hoy le toca pagar a</p>
+      <p id="next-name" class="next-name">—</p>
+      <button id="btn-pay" class="btn-primary">Registrar pago</button>
+      <button id="btn-other" class="link">¿Ha pagado otro?</button>
+    </section>
+
+    <section>
+      <h2>Historial</h2>
+      <ul id="history" class="history"></ul>
+      <p id="history-empty" class="muted">Aún no hay pagos.</p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden>
+    <span id="toast-msg"></span>
+    <button id="toast-undo" class="link">Deshacer</button>
+  </div>
+
+  <dialog id="dlg-other">
+    <h2>¿Quién ha pagado?</h2>
+    <div id="other-list" class="choice-list"></div>
+    <button class="btn-secondary" data-close>Cancelar</button>
+  </dialog>
+
+  <dialog id="dlg-manage">
+    <h2>Jugadores</h2>
+    <p class="muted">El orden de la lista es el orden de pago.</p>
+    <ul id="player-list" class="player-list"></ul>
+    <form id="form-add" class="row">
+      <input id="new-name" placeholder="Nuevo jugador" maxlength="30" required>
+      <button class="btn-secondary">Añadir</button>
+    </form>
+
+    <h2>Copia de seguridad</h2>
+    <p class="muted">Los datos se guardan solo en este móvil. Exporta de vez en cuando.</p>
+    <div class="row">
+      <button id="btn-export" class="btn-secondary">Exportar</button>
+      <label class="btn-secondary">Importar<input id="file-import" type="file" accept="application/json,.json" hidden></label>
+    </div>
+
+    <button class="btn-primary" data-close>Hecho</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
